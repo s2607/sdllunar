@@ -1,6 +1,6 @@
 #include <SDL/SDL.h>
 #include "SDL/SDL_opengl.h"
-//gcc sdlapp.c -o sdlapp `sdl-config --cflags --libs` -framework opengl
+//gcc -c sdlapp.c game.c && gcc sdlapp.o game.o -o sdlapp `sdl-config --cflags --libs` -framework opengl
 
 void
 resetglstate(void)
@@ -33,13 +33,14 @@ int main(int argc, char *argv[]) {
 	SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 5 );
 	SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
 	SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
-
 	SDL_Surface* screen =SDL_SetVideoMode(800, 600, video->vfmt->BitsPerPixel, SDL_OPENGL);
 	SDL_WM_SetCaption("Hello World! :D", NULL);
 	resetglstate();
 
 
 	while (gogogo) {
+	drawframe();
+	logic();
 	SDL_GL_SwapBuffers();
 		SDL_WaitEvent(&event);
 		if (event.type == SDL_QUIT)
