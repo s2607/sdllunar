@@ -1,7 +1,7 @@
 #include <SDL/SDL.h>
 #include "SDL/SDL_opengl.h"
-//gcc -c sdlapp.c game.c && gcc sdlapp.o game.o -o sdlapp `sdl-config --cflags --libs` -framework opengl
-
+//gcc -c sdlapp.c game.c graphics.c && gcc sdlapp.o game.o graphics.o -o sdlapp `sdl-config --cflags --libs` -framework opengl && ./sdlapp
+#define TICK_INTERVAL    50
 void
 resetglstate(void)
 {
@@ -42,9 +42,12 @@ int main(int argc, char *argv[]) {
 	drawframe();
 	logic();
 	SDL_GL_SwapBuffers();
-		SDL_WaitEvent(&event);
+	//	SDL_WaitEvent(&event);
+	while(SDL_PollEvent(&event)){
 		if (event.type == SDL_QUIT)
 			gogogo = 0;
+	}
+	SDL_Delay(TICK_INTERVAL);
 		
 	}
 	SDL_Quit();
