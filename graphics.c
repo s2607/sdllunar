@@ -17,7 +17,7 @@ void
 drawship(struct mass *ship)
 {
 	glLoadIdentity();
-	glTranslatef(ship->x,ship->y,0.0);
+	glTranslatef(ship->pos.x,ship->pos.y,0.0);
 	glRotatef(ship->r,0.0,0.0,1.0);
 	glColor3f(0.0,1.0,1.0);
 
