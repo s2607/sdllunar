@@ -18,11 +18,11 @@ drawship(struct mass *ship)
 {
 	glLoadIdentity();
 	glTranslatef(ship->x,ship->y,0.0);
-	glRotatef(0.0,0.0,0.0);
+	glRotatef(ship->r,0.0,0.0,1.0);
 	glColor3f(0.0,1.0,1.0);
 
 	glScalef(4.f,4.f,4.f);//scale is wrong at this point
-	drawship();
+	drawsb();
 
 }
 float
@@ -45,7 +45,9 @@ drawworld(float start, float end, float t, float (*f)(float) )
 void
 drawframe(void)
 {
-	draship(ship1);
+	glClearColor(0.1f, 0.0f, 0.0f, 1.0f );                                                                              
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);   
+	drawship(&ship1);
 	glLoadIdentity();
 	glTranslatef(0.0,100.0,0.0);
 
