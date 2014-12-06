@@ -1,5 +1,11 @@
 #include "game.h"
+void
+regl(void)
+{
+	glLoadIdentity();
+	glTranslatef(0.0,300.0,0.0);
 
+}
 void
 drawsb(void)
 {
@@ -16,8 +22,7 @@ drawsb(void)
 void
 drawship(struct mass *ship)
 {
-	glLoadIdentity();
-	glTranslatef(ship->pos.x,ship->pos.y,0.0);
+		glTranslatef(ship->pos.x,ship->pos.y,0.0);
 	glRotatef(ship->r,0.0,0.0,1.0);
 	glColor3f(0.0,1.0,1.0);
 
@@ -29,7 +34,7 @@ float
 terainf(float x)
 {
 	x=x/30;
-	return (sin(x*8.7)*10+sin(x*5.5)*10)+100;
+	return (sin(x*8.7)*10+sin(x*5.5)*10)+0.0;
 }
 void
 drawworld(float start, float end, float t, float (*f)(float) )
@@ -45,10 +50,11 @@ drawworld(float start, float end, float t, float (*f)(float) )
 void
 drawframe(void)
 {
+	regl();
 	glClearColor(0.1f, 0.0f, 0.0f, 1.0f );                                                                              
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);   
 	drawship(&ship1);
-	glLoadIdentity();
+	regl();
 //	glTranslatef(0.0,100.0,0.0);
 
 	glColor3f(0.0,1.0,0.0);
