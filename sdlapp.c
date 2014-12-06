@@ -7,11 +7,11 @@ resetglstate(void)
 {
 		glEnable( GL_TEXTURE_2D );
 		glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
-		glViewport( 0, 0, 640, 480 );
+		glViewport( 0, 0, 800, 600 );
 		glClear( GL_COLOR_BUFFER_BIT );
 		glMatrixMode( GL_PROJECTION );
 		glLoadIdentity();
-		glOrtho(0.0f, 640, 480, 0.0f, -1.0f, 1.0f);
+		glOrtho(0.0f, 800, 600, 0.0f, -1.0f, 1.0f);
 		glMatrixMode( GL_MODELVIEW );
 		glLoadIdentity();
 }
