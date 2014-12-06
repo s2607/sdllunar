@@ -34,10 +34,11 @@ nderiv( float (*f)(float), float x, float h)
 	return (f(x+h)-f(x-h));	
 }
 
-struct vect2
+int
 colground()
 {
-	return (struct vect2){.x=0,.y=ship1.pos.y<terainf(ship1.pos.x) ? -1 : 0};
+	printf("%f %f\n", ship1.pos.y, terainf(ship1.pos.x));
+	return ship1.pos.y>terainf(ship1.pos.x);
 }
 void
 applyforce(struct mass *ob, struct force f)
@@ -55,9 +56,11 @@ applyforcecenter(struct mass *ob, struct vect2 f)
 void
 logic(void)
 {
+	//int a=getchar();
 	ship1.vel.y=ship1.vel.y+0.1;
-	if(colground().y+colground().x)
+	if(colground())
 	{
+		puts("collision");
 		applyforcecenter(&ship1, 
 			mulvectscal(atovect(nderiv(terainf,0.1,ship1.pos.x)),
 				mag(ship1.vel)*-2
@@ -67,4 +70,9 @@ logic(void)
 	ship1.pos.x=ship1.pos.x+ship1.vel.x;
 	ship1.pos.y=ship1.pos.y+ship1.vel.y;
 	ship1.r=ship1.r+ship1.vr;
+}
+void
+gameinit()
+{
+	ship1.pos.x=50.0;
 }

@@ -21,7 +21,7 @@ drawship(struct mass *ship)
 	glRotatef(ship->r,0.0,0.0,1.0);
 	glColor3f(0.0,1.0,1.0);
 
-	glScalef(4.f,4.f,4.f);//scale is wrong at this point
+//	glScalef(4.f,4.f,4.f);//scale is wrong at this point
 	drawsb();
 
 }
@@ -29,7 +29,7 @@ float
 terainf(float x)
 {
 	x=x/30;
-	return sin(x*8.7)*10+sin(x*5.5)*10;
+	return (sin(x*8.7)*10+sin(x*5.5)*10)+100;
 }
 void
 drawworld(float start, float end, float t, float (*f)(float) )
@@ -49,10 +49,10 @@ drawframe(void)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);   
 	drawship(&ship1);
 	glLoadIdentity();
-	glTranslatef(0.0,100.0,0.0);
+//	glTranslatef(0.0,100.0,0.0);
 
 	glColor3f(0.0,1.0,0.0);
-	glScalef(4.f,4.f,4.f);
+//	glScalef(4.f,4.f,4.f);
 	drawworld(1.0,100.0,0.1,terainf);
 }
 

@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
 	SDL_WM_SetCaption("Hello World! :D", NULL);
 	resetglstate();
 
-
+	gameinit();
 	while (gogogo) {
 	drawframe();
 	logic();
